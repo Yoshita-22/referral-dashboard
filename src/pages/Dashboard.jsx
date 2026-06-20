@@ -3,6 +3,8 @@ import Overview from '../components/Overview'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Cookies from 'js-cookie'
+import ServiceSummary from '../components/Services'
+import ShareReferral from '../components/ShareReferral'
 
 
 function Dashboard() {
@@ -21,9 +23,6 @@ useEffect(() => {
           },
         }
       );
-
-      
-
       const data = await response.json();
 
       if (!response.ok) {
@@ -44,6 +43,8 @@ useEffect(() => {
     <div>
         <Navbar/>
         <Overview metrics = {dashboardData.metrics}/>
+        <ServiceSummary serviceSummary = {dashboardData.serviceSummary}/>
+        <ShareReferral referral = {dashboardData.referral}/>
         <Footer/>
     </div>
   )
