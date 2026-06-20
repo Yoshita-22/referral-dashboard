@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie"
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err,setErrMsg] = useState("")
   const navigate = useNavigate();
+  const token = Cookies.get("jwt_token");
+  if(token) return <Navigate to = "/" replace/>
   const handleSubmit = async(e) => {
+
     e.preventDefault();
         const options = {
             method:"POST",
